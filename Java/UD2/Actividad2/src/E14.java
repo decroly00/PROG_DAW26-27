@@ -16,23 +16,24 @@ public class E14 {
         horastrabajo = scan.nextInt();
         System.out.println("Introducir salario por hora:");
         euroshora = scan.nextInt();
-        if (horastrabajo<=35) {
+        if (horastrabajo<=35 && horastrabajo>0) {
             bruto = horastrabajo * euroshora;
         }
-        else {
+        else if (horastrabajo>35){
             bruto = 35*euroshora + (horastrabajo-35) * euroshora * 1.5;
+        } else {
+            IO.println("xd");
+            return;
         }
-        System.out.println("Salario bruto: " + bruto);
+        System.out.println("Salario bruto de " + nombre + ": " + bruto);
         if (bruto<=500) {
             neto = bruto;
-            System.out.println(neto);
+        }
+        else if (bruto<=900) {
+                neto = (bruto-500)*0.75 + 500;
         }
         else {
-            if (bruto<=900)
-                neto = (bruto-500)*0.75 + 500;
-            else {
-                neto = (bruto-900)*0.55 + 800;}
-        }
+            neto = (bruto-900)*0.55 + 800;}
         System.out.println(nombre +  " ha cobrado como salario neto: " + neto);
     }
 }

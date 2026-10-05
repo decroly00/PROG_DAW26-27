@@ -17,8 +17,7 @@ public class Main {
         edad = scan.nextInt();
         if (edad >= 18) {
             System.out.println("Eres mayor de edad.");
-        }
-        else if (edad < 18) {
+        } else if (edad < 18) {
             System.out.println("Eres menor de edad.");
         }
         // 3. Realiza un programa que muestre por pantalla los 20 primeros números naturales (1, 2,
@@ -71,15 +70,14 @@ public class Main {
             System.out.println("Notable");
         } else if (calificacion >= 9 && calificacion <= 10) {
             System.out.println("Sobresaliente");
-        }
-        else {
+        } else {
             System.out.println("xd");
         }
         // 8. Realiza un programa que lea un número positivo N y calcule y visualice su factorial N!
         //Siendo el factorial:
         int N;
-          System.out.println("Introudce un numero: ");
-          N = scan.nextInt();
+        System.out.println("Introudce un numero: ");
+        N = scan.nextInt();
         double i = N;
         double Nf = 1;
         while (i != 0) {
@@ -100,15 +98,15 @@ public class Main {
         System.out.println("Introduce los Segundos: ");
         Segundos = scan.nextInt();
         Segundos++;
-        if (Segundos==60) {
+        if (Segundos == 60) {
             Segundos = 0;
             Minutos++;
         }
-        if (Minutos==60) {
+        if (Minutos == 60) {
             Minutos = 0;
             Hora++;
         }
-        if (Hora==24) {
+        if (Hora == 24) {
             Hora = 0;
         }
         System.out.println("Son las: " + Hora + ":" + Minutos + ":" + Segundos);
@@ -116,14 +114,18 @@ public class Main {
         //leído algún número negativo o no.
         int J;
         boolean negativo = false;
-        for (i=0; i <= 10; i++){
+        for (i = 0; i <= 10; i++) {
             System.out.println("Introduce numero no nulo: ");
             J = scan.nextInt();
-            if (J==0) {
+            if (J == 0) {
                 System.out.println("No nulo: ");
                 J = scan.nextInt();
-            }
-            if (J<0){
+                if (J == 0) {
+                    while (1 == 1) {
+                        System.out.println("subnormal");
+                    }
+                }
+            } else if (J < 0) {
                 negativo = true;
             }
 
@@ -132,22 +134,25 @@ public class Main {
         // 11. Realiza un programa que lea 10 números no nulos y luego muestre un mensaje
         //indicando cuántos son positivos y cuantos negativos.
         int Nnegativos = 0;
-        for (i=0; i <= 10; i++){
+        for (i = 0; i <= 10; i++) {
             System.out.println("Introduce numero no nulo: ");
             J = scan.nextInt();
-            if (J==0) {
+            if (J == 0) {
                 System.out.println("No nulo: ");
                 J = scan.nextInt();
-                if (J==0) {
-                    System.out.println("subnormal");
+                if (J == 0) {
+                    while (1 == 1) {
+                        System.out.println("subnormal");
+                    }
+
                 }
+                if (J < 0) {
+                    Nnegativos++;
+                }
+
             }
-            if (J<0){
-                Nnegativos++;
-            }
+            System.out.println("Negativos " + Nnegativos);
 
         }
-        System.out.println("Negativos " + Nnegativos);
-
     }
 }

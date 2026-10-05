@@ -6,19 +6,18 @@ public class E12 {
         boolean negativo = false;
         int negativos = 0;
         int positivos = 0;
-        int J = 1;
-        while (J!=0) {
+        int J = 0;
+        do {
             System.out.println("Introduce numero no nulo: ");
             J = scan.nextInt();
-            if (J<0){
+            if (J < 0) {
                 negativo = true;
                 negativos++;
-            }
-            if (J>0) {
+            } else if (J > 0) {
                 positivos++;
             }
-        }
+        } while (J!=0);
         System.out.println("Has introducido un 0");
-        System.out.println("¿Negativos? " + negativo + " Nª negativos:" + negativos + " Nª postivos: " + positivos);
+        System.out.println("¿Negativos? " + negativo + " Nª negativos: " + negativos + " Nª postivos: " + positivos);
     }
 }
