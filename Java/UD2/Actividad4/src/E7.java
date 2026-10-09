@@ -10,10 +10,10 @@ public class E7{
         int P = scan.nextInt();
         int Q = scan.nextInt();
         int dif = Math.abs(P-Q);
-        int[] R = new int[dif];
-        for (int i = dif; i < R.length + dif; i++) {
-            R[i-dif] = i;
-            IO.println("El valor de la posicion " + (i - dif) + " es " + R[i-dif]);
+        int[] R = new int[dif + 1];
+        for (int i = 0; i < R.length; i++) {
+            R[i] = i + dif;
+            IO.println("El valor de la posicion " + (i) + " es " + R[i]);
         }
 
     }
