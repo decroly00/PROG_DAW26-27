@@ -8,10 +8,11 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         // 1. Crea un programa que pida una cadena de texto por teclado y luego muestre cada
         //palabra de la cadena en una línea distinta.
-        IO.println("escribe una palabra");
+        IO.println("escribe una frase");
         String A = scan.nextLine();
-        for (int i = 0; i<A.length(); i++){
-            IO.println(A.charAt(i));
+        String[] aA = A.split(" ");
+        for (String a : aA) {
+            IO.println(a);
         }
         // 2. Crea un programa que pida dos cadenas de texto por teclado y luego indique si son
         //iguales, además de si son iguales sin diferenciar entre mayúsculas y minúsculas.
@@ -19,31 +20,28 @@ public class Main {
         String B = scan.nextLine();
         IO.println("otra");
         String C = scan.nextLine();
-        if (B.equalsIgnoreCase(C)) {
+        if (B.equals(C)) {
             IO.println("Son iguales");
         } else {
             IO.println("no son iguales");
+        }
+        if (B.equalsIgnoreCase(C)) {
+            IO.println("Son iguales sin importar mayusculas");
+        } else {
+            IO.println("no son iguales sin importar mayusculas");
         }
         // 3. Crea un programa que pida por teclado tres cadenas de texto: nombre y dos apellidos.
         //Luego mostrará un código de usuario (en mayúsculas) formado por la concatenación de
         //las tres primeras letras de cada uno de ellos. Por ejemplo, si se introduce “Lionel”,
         //“Tarazón” y “Alcocer” mostrará “LIOTARALC”.
-        IO.println("escribe una palabra");
+        IO.println("escribe nombre y 2 apellidos");
         String D = scan.nextLine().toUpperCase();
-        IO.println("otra");
-        String E = scan.nextLine().toUpperCase();
-        IO.println("otra mas");
-        String F = scan.nextLine().toUpperCase();
+        String[] aD = D.split(" ");
 
         for (int i = 0; i<3; i++){
-            IO.print(D.charAt(i));
+            IO.print(aD[i].substring(0,3));
         }
-        for (int i = 0; i<3; i++){
-            IO.print(E.charAt(i));
-        }
-        for (int i = 0; i<3; i++){
-            IO.print(F.charAt(i));
-        }
+        IO.println();
         // 4. Crea un programa que muestre por pantalla cuantas vocales de cada tipo hay (cuantas
         //‘a’, cuantas ‘e’, etc.) en una frase introducida por teclado. No se debe diferenciar entre
         //mayúsculas y minúsculas. Por ejemplo, dada la frase “Mi mama me mima” dirá que hay:

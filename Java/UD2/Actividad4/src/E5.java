@@ -21,6 +21,7 @@ public class E5 {
 
         }
         media = suma / nums.length;
+        IO.println("La suma es: " + suma);
         IO.println("La media es: " + media);
     }
 }

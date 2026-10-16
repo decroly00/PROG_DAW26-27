@@ -15,7 +15,8 @@ public class E9 {
 
             if (O == N) {
                 J++;
-            }
+                // faltan las posiciones de N
+             }
 
         }
         IO.println("El numero se ha repetido " + J + " veces");

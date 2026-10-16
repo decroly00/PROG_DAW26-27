@@ -54,6 +54,14 @@ public class Main {
             min = Math.min(min, nums[i]);
 
         }
+        // Mejor:
+        //for (int i = 0; i < nums.length; i++) {
+        //
+        //            IO.println("Escribe un numero: ");
+        //            nums[i] = scan.nextDouble();
+        //            max = Math.max(max, nums[i]);
+        //            min = Math.min(min, nums[i]);
+        //        }
         IO.println("El numero maximo es: " + max);
         IO.println("El numero minimo es: " + min);
 

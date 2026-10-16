@@ -27,11 +27,12 @@ public class E12 {
                     IO.println("Ubicacion valor a introducir (0-9):");
                     V = scan.nextInt();
                     IO.println("introduce valor");
-                    N[V] = scan.nextInt();
-
+                    if (V>0 && V<N.length) {
+                        N[V] = scan.nextInt();
+                    }
                 }
                 case "c" ->{
-                    return;
+                    IO.println("cerrar");
 
                 }
                 default -> IO.println("introduce opcion valida");

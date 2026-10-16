@@ -10,14 +10,13 @@ public class E14 {
     IO.println(J);
     int[] N = new int[J];
     int i = 0;
-    while (i<J) {
         for (int j = 0; j < 10 ;j++ ){
             //repetir k veces j numero hasta j numero
-            for (int k = 0; k<=j;k++ ,i++ ){
+            for (int k = 0; k<=j;k++){
                 N[i] = j+1;
+                i++;
             }
         }
-    }
         for (int num : N){
             IO.println(num);
         }
