@@ -22,10 +22,7 @@ public class Main {
         String C = scan.nextLine();
         if (B.equals(C)) {
             IO.println("Son iguales");
-        } else {
-            IO.println("no son iguales");
-        }
-        if (B.equalsIgnoreCase(C)) {
+        } else if (B.equalsIgnoreCase(C)) {
             IO.println("Son iguales sin importar mayusculas");
         } else {
             IO.println("no son iguales sin importar mayusculas");
@@ -34,14 +31,16 @@ public class Main {
         //Luego mostrará un código de usuario (en mayúsculas) formado por la concatenación de
         //las tres primeras letras de cada uno de ellos. Por ejemplo, si se introduce “Lionel”,
         //“Tarazón” y “Alcocer” mostrará “LIOTARALC”.
-        IO.println("escribe nombre y 2 apellidos");
-        String D = scan.nextLine().toUpperCase();
+        IO.println("escribe un nombre y dos apellidos separados por espacios");
+        String D = scan.nextLine();
         String[] aD = D.split(" ");
 
         for (int i = 0; i<3; i++){
-            IO.print(aD[i].substring(0,3));
+            IO.print(aD[i].substring(0,3).toUpperCase());
         }
         IO.println();
+
+
         // 4. Crea un programa que muestre por pantalla cuantas vocales de cada tipo hay (cuantas
         //‘a’, cuantas ‘e’, etc.) en una frase introducida por teclado. No se debe diferenciar entre
         //mayúsculas y minúsculas. Por ejemplo, dada la frase “Mi mama me mima” dirá que hay:

@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class E5 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String A = scan.nextLine().toLowerCase().replace(" ", "");
+        String frase = scan.nextLine();
+        String A = frase.toLowerCase().replace(" ", "");
 
         char[] a = A.toCharArray();
         char[] ai = new char[a.length];
@@ -13,6 +14,8 @@ public class E5 {
         }
         if (Arrays.equals(a,ai)){
             IO.println("son palindromos");
+        } else {
+            IO.println("No son palidromos");
         }
     }
 }
