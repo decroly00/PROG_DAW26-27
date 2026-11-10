@@ -1,19 +1,23 @@
+import model.tipo;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Movimiento {
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     int id;
-    String Fecha; //restriccion formato
-    String tipo; //restriccion ingreso/retirada
-    int cantidad;// distinto de 0
+    private LocalDateTime fecha;
+    tipo tipo; //restriccion ingreso/retirada
+    double cantidad;// distinto de 0
     private static int contador = 0;
 
-    public Movimiento(String Fecha, String tipo, int cantidad){
+    public Movimiento(tipo tipo, double cantidad){
         this.id = contador;
-        this.Fecha = Fecha;
+        this.fecha = LocalDateTime.now();
         this.tipo = tipo;
         this.cantidad = cantidad;
         contador++;
     }
-    public String mostrarinfoMovimiento(){
-        return Fecha + tipo + cantidad;
-    }
+
 
 }

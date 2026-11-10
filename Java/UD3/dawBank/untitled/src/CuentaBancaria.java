@@ -1,17 +1,22 @@
+import model.tipo;
+
 public class CuentaBancaria {
     private static int contador = 0;
     private int id;
     private String IBAN;
     private String Titular;
-    private int saldo;
+    private double saldo;
     private Movimiento[] movimientos = new Movimiento[100];
     private int nMovimientos;
 
-    public int getSaldo() {
+    public double getSaldo() {
         return this.saldo;
     }
 
-
+    public String info() {
+        String info;
+        return info = this.id + " " + this.IBAN + " " + this.Titular + " " + this.saldo;
+    }
     public CuentaBancaria(String IBAN, String Titular) {
         this.id = contador;
         this.IBAN = IBAN;
@@ -20,19 +25,21 @@ public class CuentaBancaria {
 
         contador++;
     }
-
-    public void ingreso(int ingreso) {
-        if (ingreso > 0) {
-            this.saldo += ingreso;
-            movimientos[nMovimientos] = new Movimiento("placeholder fecha", "Ingreso", ingreso);
-        }
+    public String getIBAN(){
+        return this.IBAN;
+    }
+    public String getTitular(){
+        return this.Titular;
     }
 
-    public void retirada(int retirada) {
-        if (retirada > 0) {
-            this.saldo -= retirada;
 
-
+    public void movimiento(double movimiento) {
+        if (movimiento > 0) {
+            this.saldo -= movimiento;
+            movimientos[nMovimientos] = new Movimiento(tipo.retirada, movimiento);
+        } else {
+            this.saldo += movimiento;
+            movimientos[nMovimientos] = new Movimiento(tipo.ingreso, movimiento);
         }
 
     }
