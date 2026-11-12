@@ -15,7 +15,7 @@ public class CuentaBancaria {
 
     public String info() {
         String info;
-        return info = this.id + " " + this.IBAN + " " + this.Titular + " " + this.saldo;
+        return info ="IBAN: " + this.IBAN + "\nTitular: " + this.Titular + "\nSaldo disponible: " + this.saldo + "€";
     }
     public CuentaBancaria(String IBAN, String Titular) {
         this.id = contador;
@@ -34,13 +34,24 @@ public class CuentaBancaria {
 
 
     public void movimiento(double movimiento) {
-        if (movimiento > 0) {
+        if (movimiento < 0) {
             this.saldo -= movimiento;
-            movimientos[nMovimientos] = new Movimiento(tipo.retirada, movimiento);
+            movimientos[nMovimientos] = new Movimiento(tipo.Retirada, movimiento);
         } else {
             this.saldo += movimiento;
-            movimientos[nMovimientos] = new Movimiento(tipo.ingreso, movimiento);
+            movimientos[nMovimientos] = new Movimiento(tipo.Ingreso, movimiento);
         }
-
+        nMovimientos++;
+    }
+    public String getListadoMovimientos(){
+                    String listadoMovimientos = "";
+                    if (nMovimientos != 0) {
+                        for (int i = 0; i < nMovimientos; i++) {
+                            listadoMovimientos += movimientos[i].infoMovimientos() + "\n";
+                        }
+                    } else {
+                        listadoMovimientos = "No hay movimientos";
+                    }
+                    return listadoMovimientos;
     }
 }

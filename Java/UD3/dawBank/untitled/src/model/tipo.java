@@ -1,5 +1,5 @@
 package model;
 
 public enum tipo {
-    ingreso, retirada
+    Ingreso, Retirada
 }

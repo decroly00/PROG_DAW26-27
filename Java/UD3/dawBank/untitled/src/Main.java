@@ -1,16 +1,27 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
     //crear cuenta
-    CuentaBancaria cuenta1 = new CuentaBancaria("ES6621000418401234567891", "mateo");
+    IO.println("Introduce numero de cuenta, tiene que tener 2 letras seguidas por 22 numeros");
+    Scanner scan = new Scanner(System.in);
+    String IBAN = scan.nextLine().toUpperCase();
+    while (!IBAN.matches("[A-Z]{2}[0-9]{22}")){
+        IO.println("Numero de cuenta incorrecto");
+        scan = new Scanner(System.in);
+        IBAN = scan.nextLine().toUpperCase();
+    }
+    IO.println("Introduce el titular de la cuenta");
+    String titular = scan.nextLine();
+
+
+    CuentaBancaria cuenta1 = new CuentaBancaria(IBAN, titular);
 
 
     Double t;
     String opcion;
-    Scanner scan = new Scanner(System.in);
+
     boolean aux = true;
     do {
         scan = new Scanner(System.in);
+        IO.println("=====MENU=====");
         IO.println(
                 "1. Datos de la cuenta\n" +
                 "2. IBAN\n" +
@@ -61,9 +72,9 @@ void main() {
             }
             IO.println("Ha introducido " + t + "€");
             if ((cuenta1.getSaldo()-t)>=-50.0){
-//                if (t>3000){
-//                    IO.println("AVISO: Notificar a hacienda");
-//                }
+                if (t>3000){
+                    IO.println("AVISO: Notificar a hacienda");
+                }
                 cuenta1.movimiento(-t);
                 if (cuenta1.getSaldo()<0){
                     IO.println("AVISO: Saldo negativo");
@@ -75,10 +86,12 @@ void main() {
         }
         case "7" -> {
             IO.println("asd");
+                IO.println(cuenta1.getListadoMovimientos());
 
         }
         case "8" -> {
-            IO.println("asd");
+            IO.println("El programa se cerrara");
+            aux = false;
 
         }
         default -> {
