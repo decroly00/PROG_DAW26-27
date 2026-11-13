@@ -54,6 +54,8 @@ void main() {
             IO.println("Introduzca la cantidad de dinero que desea ingresar:");// posibilidad marcar 0
             scan = new Scanner(System.in);
             t = scan.nextDouble();
+
+            //abajo añadir sistema antirretrasados 0 a 9 y 0 a 9 + €
             while (t == 0){
                 IO.println("La cantidad no puede ser 0, introduce una cantidad válida");
                 t = scan.nextDouble();
@@ -99,10 +101,8 @@ void main() {
         }
     }
     } while (aux);
-
-
-
-
+}
+public class solonumeros{
 
 }
 
