@@ -1,3 +1,4 @@
+import model.Movimiento;
 import model.tipo;
 
 public class CuentaBancaria {
@@ -6,22 +7,23 @@ public class CuentaBancaria {
     private String IBAN;
     private String Titular;
     private double saldo;
-    private Movimiento[] movimientos = new Movimiento[100];
+    private Movimiento[] movimientos;
     private int nMovimientos;
 
     public double getSaldo() {
         return this.saldo;
     }
 
-    public String info() {
-        String info;
-        return info ="IBAN: " + this.IBAN + "\nTitular: " + this.Titular + "\nSaldo disponible: " + this.saldo + "€";
+    public String infoCuenta() {
+        String infoCuenta;
+        return infoCuenta ="IBAN: " + this.IBAN + "\nTitular: " + this.Titular + "\nSaldo disponible: " + this.saldo + "€";
     }
     public CuentaBancaria(String IBAN, String Titular) {
         this.id = contador;
         this.IBAN = IBAN;
         this.Titular = Titular;
-        this.saldo = 0;
+        this.saldo = 0.0;
+        this.movimientos = new Movimiento[100];
 
         contador++;
     }
@@ -35,19 +37,18 @@ public class CuentaBancaria {
 
     public void movimiento(double movimiento) {
         if (movimiento < 0) {
-            this.saldo -= movimiento;
-            movimientos[nMovimientos] = new Movimiento(tipo.Retirada, movimiento);
+            movimientos[nMovimientos] = new Movimiento(tipo.Retirada, -movimiento);
         } else {
-            this.saldo += movimiento;
             movimientos[nMovimientos] = new Movimiento(tipo.Ingreso, movimiento);
         }
+        this.saldo += movimiento;
         nMovimientos++;
     }
     public String getListadoMovimientos(){
                     String listadoMovimientos = "";
                     if (nMovimientos != 0) {
                         for (int i = 0; i < nMovimientos; i++) {
-                            listadoMovimientos += movimientos[i].infoMovimientos() + "\n";
+                            listadoMovimientos += movimientos[i].infoMovimiento() + "\n";
                         }
                     } else {
                         listadoMovimientos = "No hay movimientos";

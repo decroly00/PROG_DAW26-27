@@ -1,6 +1,7 @@
 void main() {
     //crear cuenta
-    IO.println("Introduce numero de cuenta, tiene que tener 2 letras seguidas por 22 numeros");
+    IO.println("Introduce numero de cuenta, tiene que tener 2 letras seguidas por 22 numeros. \n" +
+            "Ej: ES1234567890123456789012");
     Scanner scan = new Scanner(System.in);
     String IBAN = scan.nextLine().toUpperCase();
     while (!IBAN.matches("[A-Z]{2}[0-9]{22}")){
@@ -15,7 +16,7 @@ void main() {
     CuentaBancaria cuenta1 = new CuentaBancaria(IBAN, titular);
 
 
-    Double t;
+    double t = 0;
     String opcion;
 
     boolean aux = true;
@@ -36,7 +37,7 @@ void main() {
 
         case "1" -> { //mostrar datos de la cuenta
             IO.println("Datos de la cuenta:");
-            IO.println(cuenta1.info());
+            IO.println(cuenta1.infoCuenta());
         }
         case "2" -> {
             IO.println("IBAN: " + cuenta1.getIBAN());
@@ -51,27 +52,15 @@ void main() {
 
         }
         case "5" -> {
-            IO.println("Introduzca la cantidad de dinero que desea ingresar:");// posibilidad marcar 0
-            scan = new Scanner(System.in);
-            t = scan.nextDouble();
-
-            //abajo añadir sistema antirretrasados 0 a 9 y 0 a 9 + €
-            while (t == 0){
-                IO.println("La cantidad no puede ser 0, introduce una cantidad válida");
-                t = scan.nextDouble();
-            }
+            IO.println("Introduzca la cantidad de dinero que desea ingresar:");
+            t = solonumero(t);
             IO.println("Ha introducido " + t + "€");
             cuenta1.movimiento(t);
             IO.println("Su saldo actual es de " + cuenta1.getSaldo() + "€");
         }
         case "6" -> {
-            IO.println("Introduzca la cantidad de dinero que desea retirar:");// posibilidad marcar 0
-            scan = new Scanner(System.in);
-            t = scan.nextDouble();
-            while (t == 0){
-                IO.println("La cantidad no puede ser 0, introduce una cantidad válida");
-                t = scan.nextDouble();
-            }
+            IO.println("Introduzca la cantidad de dinero que desea retirar:");
+            t = solonumero(t);
             IO.println("Ha introducido " + t + "€");
             if ((cuenta1.getSaldo()-t)>=-50.0){
                 if (t>3000){
@@ -84,7 +73,7 @@ void main() {
             } else {
                 IO.println("No tienes dinero suficiente");
             }
-
+            IO.println("Su saldo actual es de " + cuenta1.getSaldo() + "€");
         }
         case "7" -> {
             IO.println("asd");
@@ -102,7 +91,21 @@ void main() {
     }
     } while (aux);
 }
-public class solonumeros{
+public static double solonumero(double t){
+    Scanner scan = new Scanner(System.in);
 
+    scan = new Scanner(System.in);
+    double numero = 0;
+    while (7 == 7) {
+        if (scan.hasNextDouble()) {
+            numero = Math.abs(scan.nextDouble());
+        } else {
+            IO.println("Introduce solo numeros diferentes de 0");
+            scan.nextLine();
+        }
+        if (numero != 0) {
+            return numero;
+        }
+    }
 }
 
