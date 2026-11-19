@@ -25,6 +25,12 @@ public class Pelicula {
         contador++;
 
     }
+
+    public void alquilarPelicula(boolean isAlquilada) {
+        this.isAlquilada = true;
+        this.FechaAlquiler = LocalDateTime.now();
+    }
+
     public String mostrarInfoPelicula(){
         String mostrarInfoPelicula = "Identificador: " + this.cod +
                 "\nTitulo: " + this.titulo +
@@ -39,5 +45,8 @@ public class Pelicula {
         return mostrarInfoPelicula;
     }
 
+    public boolean isAlquilada() {
+        return isAlquilada;
+    }
 }
 

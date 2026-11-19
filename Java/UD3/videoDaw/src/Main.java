@@ -6,16 +6,7 @@ void main() {
 
         String opcion;
         scan = new Scanner(System.in);
-        IO.println("=====MENU=====");
-        IO.println(
-                "1. Crear y Registrar VideoClub en la franquicia\n" +
-                        "2. Registrar pelicula en el videoclub\n" +
-                        "3. Crear y registrar cliente en videoclub\n" +
-                        "4. Alquilar pelicula\n" +
-                        "5. Devolver pellicula\n" +
-                        "6. Dar de baja cliente\n" +
-                        "7. Dar de baja pelicula\n" +
-                        "8. Salir\n");
+        imprimirMenu();
         opcion = scan.nextLine();
         switch (opcion) {
 
@@ -50,4 +41,17 @@ void main() {
             }
         }
     } while (aux);
+}
+
+private static void imprimirMenu() {
+    IO.println("=====MENU=====");
+    IO.println(
+                    "1. Crear y Registrar VideoClub en la franquicia\n" +
+                    "2. Registrar pelicula en el videoclub\n" +
+                    "3. Crear y registrar cliente en videoclub\n" +
+                    "4. Alquilar pelicula\n" +
+                    "5. Devolver pellicula\n" +
+                    "6. Dar de baja cliente\n" +
+                    "7. Dar de baja pelicula\n" +
+                    "8. Salir\n");
 }

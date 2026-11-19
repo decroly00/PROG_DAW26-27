@@ -16,7 +16,7 @@ void main() {
     CuentaBancaria cuenta1 = new CuentaBancaria(IBAN, titular);
 
 
-    double t = 0;
+    double cantidadMovimiento = 0;
     String opcion;
 
     boolean aux = true;
@@ -53,31 +53,25 @@ void main() {
         }
         case "5" -> {
             IO.println("Introduzca la cantidad de dinero que desea ingresar:");
-            t = solonumero(t);
-            IO.println("Ha introducido " + t + "€");
-            cuenta1.movimiento(t);
-            IO.println("Su saldo actual es de " + cuenta1.getSaldo() + "€");
+            cantidadMovimiento = comprobacionNumero(cantidadMovimiento);
+            cuenta1.movimiento(cantidadMovimiento);
+            imprimirSaldoCuenta(cuenta1);
         }
         case "6" -> {
             IO.println("Introduzca la cantidad de dinero que desea retirar:");
-            t = solonumero(t);
-            IO.println("Ha introducido " + t + "€");
-            if ((cuenta1.getSaldo()-t)>=-50.0){
-                if (t>3000){
-                    IO.println("AVISO: Notificar a hacienda");
-                }
-                cuenta1.movimiento(-t);
+            cantidadMovimiento = comprobacionNumero(cantidadMovimiento);
+            if ((cuenta1.getSaldo() - cantidadMovimiento)>=-50.0){
+                cuenta1.movimiento(-cantidadMovimiento);
                 if (cuenta1.getSaldo()<0){
                     IO.println("AVISO: Saldo negativo");
                 }
             } else {
                 IO.println("No tienes dinero suficiente");
             }
-            IO.println("Su saldo actual es de " + cuenta1.getSaldo() + "€");
+            imprimirSaldoCuenta(cuenta1);
         }
         case "7" -> {
-            IO.println("asd");
-                IO.println(cuenta1.getListadoMovimientos());
+            IO.println(cuenta1.getListadoMovimientos());
 
         }
         case "8" -> {
@@ -91,7 +85,12 @@ void main() {
     }
     } while (aux);
 }
-public static double solonumero(double t){
+
+public static void imprimirSaldoCuenta(CuentaBancaria cuenta1) {
+    IO.println("Su saldo actual es de " + cuenta1.getSaldo() + "€");
+}
+
+public static double comprobacionNumero(double t){
     Scanner scan = new Scanner(System.in);
 
     scan = new Scanner(System.in);
@@ -99,12 +98,15 @@ public static double solonumero(double t){
     while (7 == 7) {
         if (scan.hasNextDouble()) {
             numero = Math.abs(scan.nextDouble());
-        } else {
-            IO.println("Introduce solo numeros diferentes de 0");
-            scan.nextLine();
         }
         if (numero != 0) {
+            if (numero>3000){
+                IO.println("AVISO: Notificar a hacienda");
+            }
+            IO.println("Ha introducido " + numero + "€");
             return numero;
+        } else {
+            IO.println("Introduce solo numeros diferentes de 0");
         }
     }
 }
