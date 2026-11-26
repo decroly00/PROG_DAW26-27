@@ -10,7 +10,6 @@ public class Pelicula {
     private LocalDate FechaRegistro;
     private LocalDate FechaBaja;
     private LocalDateTime FechaAlquiler;
-    private boolean isBaja;
     private boolean isAlquilada;
 
     public Pelicula(String titulo, Genero genero) {
@@ -20,7 +19,6 @@ public class Pelicula {
         this.FechaRegistro = LocalDate.now();
         this.FechaBaja = LocalDate.MIN;
         this.FechaAlquiler = LocalDateTime.ofEpochSecond(0, 0, ZoneOffset.ofHours(0));
-        this.isBaja = false;
         this.isAlquilada = false;
         contador++;
 
@@ -29,20 +27,23 @@ public class Pelicula {
     public void alquilarPelicula(boolean isAlquilada) {
         this.isAlquilada = true;
         this.FechaAlquiler = LocalDateTime.now();
+
     }
 
-    public String mostrarInfoPelicula(){
-        String mostrarInfoPelicula = "Identificador: " + this.cod +
+    public String getTitulo() {
+        return titulo;
+    }
+
+    @Override
+    public String toString(){
+        String respuesta = "Identificador: " + this.cod +
                 "\nTitulo: " + this.titulo +
                 "\nGenero: " + this.genero +
                 "\nFecha de registro: " + this.FechaRegistro;
-        if (isBaja){
-            mostrarInfoPelicula += "\nFecha Baja: " + this.FechaBaja;
-        }
         if (isAlquilada){
-            mostrarInfoPelicula += "\nFecha Alquiler: " + this.FechaAlquiler;
+            respuesta += "\nFecha Alquiler: " + this.FechaAlquiler;
         }
-        return mostrarInfoPelicula;
+        return respuesta;
     }
 
     public boolean isAlquilada() {

@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class Cliente {
     private static int contadorclientes = 0;
@@ -22,28 +21,25 @@ public class Cliente {
         this.FechaBaja = LocalDate.MIN;
         this.PeliculasAlquiladas = new Pelicula[50];
         this.nPeliculas = 0;
-        this.isBaja = false;
     }
 
 
     public String mostrarPeliculasAlquiladas() {
             String PeliculasAlquiladas = "";
         for (int i = 0; i < nPeliculas; i++){
-            PeliculasAlquiladas += "\n" + this.PeliculasAlquiladas[i];
+            PeliculasAlquiladas += "\n" + this.PeliculasAlquiladas[i].toString();
         }
         return PeliculasAlquiladas;
     }
 
-    public String mostrarInfoCliente(){
-        String infoCliente = "";
-            infoCliente += "DNI: " + this.DNI + "\nNombre: " + this.Nombre +
+    @Override
+    public String toString(){
+        String respuesta = "";
+            respuesta += "DNI: " + this.DNI + "\nNombre: " + this.Nombre +
                     "\nNumero de socio: " + NumSocio + "\nDireccion" + Direccion +
                     "\nFecha de nacimiento: " + FechaNacimiento +
                     "\nPeliculas alquiladas: " + PeliculasAlquiladas;
-            if (!isBaja){
-                infoCliente += "\nFecha baja: " + FechaBaja;
-            }
-        return infoCliente;
+        return respuesta;
     }
 
     public void alquilarPelicula(Pelicula p) {
