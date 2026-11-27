@@ -26,7 +26,7 @@ public class Cliente {
 
     public String mostrarPeliculasAlquiladas() {
             String PeliculasAlquiladas = "";
-        for (int i = 0; i < nPeliculas; i++){
+        for (int i = 0; i < this.nPeliculas; i++){
             PeliculasAlquiladas += "\n" + this.PeliculasAlquiladas[i].toString();
         }
         return PeliculasAlquiladas;
@@ -36,14 +36,18 @@ public class Cliente {
     public String toString(){
         String respuesta = "";
             respuesta += "DNI: " + this.DNI + "\nNombre: " + this.Nombre +
-                    "\nNumero de socio: " + NumSocio + "\nDireccion" + Direccion +
-                    "\nFecha de nacimiento: " + FechaNacimiento +
-                    "\nPeliculas alquiladas: " + PeliculasAlquiladas;
+                    "\nNumero de socio: " + this.NumSocio + "\nDireccion" + this.Direccion +
+                    "\nFecha de nacimiento: " + this.FechaNacimiento +
+                    "\nPeliculas alquiladas: " + this.PeliculasAlquiladas;
         return respuesta;
     }
 
     public void alquilarPelicula(Pelicula p) {
-        this.PeliculasAlquiladas[nPeliculas] = p;
+        this.PeliculasAlquiladas[this.nPeliculas] = p;
+
+    }
+    public void devolverPelicula(Pelicula p) {
+        this.PeliculasAlquiladas[this.nPeliculas] = p;
 
     }
 }

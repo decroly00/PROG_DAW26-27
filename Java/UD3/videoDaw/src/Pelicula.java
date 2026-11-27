@@ -24,14 +24,53 @@ public class Pelicula {
 
     }
 
+    public static int getContador() {
+        return contador;
+    }
+
+    public String getCod() {
+        return this.cod;
+    }
+
+    public Genero getGenero() {
+        return this.genero;
+    }
+
+    public LocalDate getFechaRegistro() {
+        return this.FechaRegistro;
+    }
+
+    public LocalDate getFechaBaja() {
+        return this.FechaBaja;
+    }
+
+    public LocalDateTime getFechaAlquiler() {
+        return this.FechaAlquiler;
+    }
+
+    public void setFechaAlquiler(LocalDateTime fechaAlquiler) {
+        FechaAlquiler = fechaAlquiler;
+    }
+
+    public void setAlquilada(boolean alquilada) {
+        isAlquilada = alquilada;
+    }
     public void alquilarPelicula(boolean isAlquilada) {
         this.isAlquilada = true;
         this.FechaAlquiler = LocalDateTime.now();
 
     }
+    public void devolverPelicula(boolean isAlquilada) {
+        this.isAlquilada = false;
+        this.FechaAlquiler = LocalDateTime.ofEpochSecond(0, 0, ZoneOffset.ofHours(0));
+    }
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public boolean isAlquilada() {
+        return isAlquilada;
     }
 
     @Override
@@ -44,10 +83,6 @@ public class Pelicula {
             respuesta += "\nFecha Alquiler: " + this.FechaAlquiler;
         }
         return respuesta;
-    }
-
-    public boolean isAlquilada() {
-        return isAlquilada;
     }
 }
 

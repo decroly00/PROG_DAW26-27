@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class VideoDaw {
     private String CIF;
@@ -17,13 +18,6 @@ public class VideoDaw {
         this.nPeliculas = 0;
         this.nClientes = 0;
         this.ClientesRegistrados = new Cliente[50];
-    }
-    @Override
-    public String toString(){
-        String InfoVideoClub = "";
-            InfoVideoClub += "CIF: " + this.CIF + "\nDireccion: " + this.Direccion +
-                    "\nNumero peliculas: " + nPeliculas + "\nNumero clientes" + nClientes;
-        return InfoVideoClub;
     }
 
     public String getPeliculasRegistradas() {
@@ -83,17 +77,21 @@ public class VideoDaw {
             ClientesRegistrados[nCliente].alquilarPelicula(PeliculasRegistradas[nPelicula]);
             return "Pelicula " + PeliculasRegistradas[nPelicula].getTitulo() + " alquilada correctamente";
         }
-
     }
-//    public String alquilarPelicula(Pelicula p, Cliente c){
-//        String alquilada;
-//        if (!p.isAlquilada()){
-//          c.alquilarPelicula(p);
-//          alquilada = "La película se ha alquilado";
-//        } else {
-//            alquilada = "La película esta alquilada";
-//        }
-//        return alquilada;
-//    }
+    public String devolverPelicula(int nPelicula, int nCliente){
+        if (nPelicula>=nPeliculas){
+            return "No existe ese pelicula";
+        } else {
+            ClientesRegistrados[nCliente].devolverPelicula(PeliculasRegistradas[nPelicula]);
+            return "Pelicula " + PeliculasRegistradas[nPelicula].getTitulo() + " devuelta correctamente";
+        }
+    }
+
+    @Override
+    public String toString(){
+        return "CIF: " + this.CIF + "\nDireccion: " + this.Direccion +
+                "\nNumero peliculas: " + nPeliculas +
+                "\nNumero clientes" + nClientes;
+    }
 
 }

@@ -57,6 +57,7 @@ void main() {
                 int1 = MiUtils.leerIntPant("Introduce el ID de la pelicula.");
                 IO.println(videoclub.getPeliculasRegistradas());
                 int2 = MiUtils.leerIntPant("Introduce el ID del cliente.");
+                videoclub.devolverPelicula(int1, int2);
 
             }
             case "6" -> { // baja cliente
